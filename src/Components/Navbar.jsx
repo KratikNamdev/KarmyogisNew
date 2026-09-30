@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { ArrowUpRight, ChevronDown, Menu, X } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Menu,
+  X,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,56 +27,57 @@ const Navbar = () => {
   const services = [
     {
       name: "Salesforce",
-      href: "#services",
+      href: "/services/salesforce",
     },
     {
       name: "Web Development",
-      href: "#services",
+      href: "/services/web-development",
     },
     {
       name: "App Development",
-      href: "#services",
+      href: "/services/app-development",
     },
     {
       name: "Digital Marketing",
-      href: "#services",
+      href: "/services/digital-marketing",
     },
     {
       name: "Social Media Handling",
-      href: "#services",
+      href: "/services/social-media",
     },
     {
       name: "SEO",
-      href: "#services",
+      href: "/services/seo",
     },
     {
-      name: "Graphics",
-      href: "#services",
+      name: "Graphics & Design",
+      href: "/services/graphics-design",
     },
   ];
 
   const navItems = [
     {
       name: "Home",
-      href: "#home",
+      href: "/",
     },
     {
-      name: "Industries",
-      href: "#industries",
+      name: "About",
+      href: "/about",
     },
     {
-      name: "Technology",
-      href: "#technology",
+      name: "Contact",
+      href: "/contact",
     },
     {
-      name: "Why Karmyogis",
-      href: "#why-karmyogis",
+      name: "FAQ",
+      href: "/faq",
     },
   ];
 
   const handleNavClick = () => {
     setIsOpen(false);
     setServicesOpen(false);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -88,36 +95,48 @@ const Navbar = () => {
 
           {/* ================= LOGO ================= */}
 
-          <a
-            href="#home"
+          <Link
+            to="/"
             onClick={handleNavClick}
             className="group relative z-10 flex items-center"
           >
             <img
-              src="assets/logo.png"
+              src="/assets/logo.png"
               alt="Karmyogis"
               className="w-[80px] object-contain transition-transform duration-300 group-hover:scale-[1.02]"
             />
-          </a>
+          </Link>
 
           {/* ================= DESKTOP NAV ================= */}
 
           <nav className="hidden items-center lg:flex">
-
             <div className="flex items-center gap-1 rounded-full border border-white/[0.08] bg-white/[0.025] p-1.5 backdrop-blur-xl">
 
               {/* HOME */}
 
-              <a
-                href="#home"
+              <Link
+                to="/"
+                onClick={handleNavClick}
                 className="group relative rounded-full px-4 py-2.5 text-[12px] font-medium tracking-wide text-white/50 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
               >
                 Home
 
                 <span className="absolute bottom-[5px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#ff1638] transition-all duration-300 group-hover:w-3" />
-              </a>
+              </Link>
 
-              {/* ================= SERVICES DROPDOWN ================= */}
+              {/* ABOUT */}
+
+              <Link
+                to="/about"
+                onClick={handleNavClick}
+                className="group relative rounded-full px-4 py-2.5 text-[12px] font-medium tracking-wide text-white/50 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
+              >
+                About
+
+                <span className="absolute bottom-[5px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#ff1638] transition-all duration-300 group-hover:w-3" />
+              </Link>
+
+              {/* ================= SERVICES ================= */}
 
               <div
                 className="group/services relative"
@@ -126,7 +145,9 @@ const Navbar = () => {
               >
                 <button
                   type="button"
-                  onClick={() => setServicesOpen((prev) => !prev)}
+                  onClick={() =>
+                    setServicesOpen((prev) => !prev)
+                  }
                   className="flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[12px] font-medium tracking-wide text-white/50 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
                 >
                   Services
@@ -134,14 +155,17 @@ const Navbar = () => {
                   <ChevronDown
                     size={13}
                     className={`transition-transform duration-300 ${
-                      servicesOpen ? "rotate-180 text-[#ff1638]" : ""
+                      servicesOpen
+                        ? "rotate-180 text-[#ff1638]"
+                        : ""
                     }`}
                   />
                 </button>
 
                 {/* Dropdown */}
+
                 <div
-                  className={`absolute left-1/2 top-full w-[270px] -translate-x-1/2 pt-3 transition-all duration-300 ${
+                  className={`absolute left-1/2 top-full w-[280px] -translate-x-1/2 pt-3 transition-all duration-300 ${
                     servicesOpen
                       ? "visible translate-y-0 opacity-100"
                       : "invisible -translate-y-2 opacity-0"
@@ -150,27 +174,32 @@ const Navbar = () => {
                   <div className="overflow-hidden border border-white/[0.1] bg-[#070707]/95 p-2 shadow-[0_20px_60px_rgba(0,0,0,0.6)] backdrop-blur-2xl">
 
                     {/* Dropdown Header */}
-                    <div className="border-b border-white/[0.07] px-4 py-3">
+
+                    <Link
+                      to="/services"
+                      onClick={handleNavClick}
+                      className="block border-b border-white/[0.07] px-4 py-3 transition-colors hover:bg-white/[0.03]"
+                    >
                       <p className="text-[9px] uppercase tracking-[0.3em] text-[#ff1638]">
-                        What We Do
+                        Our Services
                       </p>
 
                       <p className="mt-1 text-xs text-white/30">
-                        Technology & Digital Solutions
+                        Explore All Services
                       </p>
-                    </div>
+                    </Link>
 
                     {/* Services */}
+
                     <div className="py-1">
                       {services.map((service, index) => (
-                        <a
+                        <Link
                           key={service.name}
-                          href={service.href}
+                          to={service.href}
                           onClick={handleNavClick}
                           className="group flex items-center justify-between px-4 py-3 transition-all duration-200 hover:bg-white/[0.05]"
                         >
                           <div className="flex items-center gap-3">
-
                             <span className="text-[9px] tracking-[0.15em] text-[#ff1638]/50">
                               0{index + 1}
                             </span>
@@ -178,44 +207,51 @@ const Navbar = () => {
                             <span className="text-[12px] text-white/55 transition-colors group-hover:text-white">
                               {service.name}
                             </span>
-
                           </div>
 
                           <ArrowUpRight
                             size={14}
                             className="text-white/15 transition-all duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#ff1638]"
                           />
-                        </a>
+                        </Link>
                       ))}
                     </div>
-
                   </div>
                 </div>
               </div>
 
-              {/* OTHER NAV ITEMS */}
+              {/* CONTACT */}
 
-              {navItems.slice(1).map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="group relative rounded-full px-4 py-2.5 text-[12px] font-medium tracking-wide text-white/50 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
-                >
-                  {item.name}
+              <Link
+                to="/contact"
+                onClick={handleNavClick}
+                className="group relative rounded-full px-4 py-2.5 text-[12px] font-medium tracking-wide text-white/50 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
+              >
+                Contact
 
-                  <span className="absolute bottom-[5px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#ff1638] transition-all duration-300 group-hover:w-3" />
-                </a>
-              ))}
+                <span className="absolute bottom-[5px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#ff1638] transition-all duration-300 group-hover:w-3" />
+              </Link>
 
+              {/* FAQ */}
+
+              <Link
+                to="/faq"
+                onClick={handleNavClick}
+                className="group relative rounded-full px-4 py-2.5 text-[12px] font-medium tracking-wide text-white/50 transition-all duration-300 hover:bg-white/[0.06] hover:text-white"
+              >
+                FAQ
+
+                <span className="absolute bottom-[5px] left-1/2 h-[2px] w-0 -translate-x-1/2 rounded-full bg-[#ff1638] transition-all duration-300 group-hover:w-3" />
+              </Link>
             </div>
           </nav>
 
           {/* ================= DESKTOP CTA ================= */}
 
           <div className="hidden lg:block">
-
-            <a
-              href="#contact"
+            <Link
+              to="/contact"
+              onClick={handleNavClick}
               className="group relative flex items-center gap-3 overflow-hidden border border-[#ff1638]/40 bg-[#ff1638]/[0.06] px-5 py-3 text-[12px] font-semibold tracking-wide text-white transition-all duration-300 hover:border-[#ff1638] hover:bg-[#ff1638] hover:shadow-[0_0_30px_rgba(255,22,56,0.2)]"
             >
               <span className="relative z-10">
@@ -228,8 +264,7 @@ const Navbar = () => {
               />
 
               <span className="absolute inset-y-0 left-[-100%] w-[70%] -skew-x-12 bg-white/10 transition-all duration-700 group-hover:left-[140%]" />
-            </a>
-
+            </Link>
           </div>
 
           {/* ================= MOBILE BUTTON ================= */}
@@ -254,7 +289,7 @@ const Navbar = () => {
         <div
           className={`absolute left-0 top-full w-full overflow-hidden border-b border-white/[0.08] bg-[#030303]/95 backdrop-blur-2xl transition-all duration-500 lg:hidden ${
             isOpen
-              ? "max-h-[700px] opacity-100"
+              ? "max-h-[850px] opacity-100"
               : "pointer-events-none max-h-0 opacity-0"
           }`}
         >
@@ -266,8 +301,8 @@ const Navbar = () => {
 
               {/* HOME */}
 
-              <a
-                href="#home"
+              <Link
+                to="/"
                 onClick={handleNavClick}
                 className="group flex items-center justify-between border-b border-white/[0.07] py-5"
               >
@@ -276,7 +311,7 @@ const Navbar = () => {
                     01
                   </span>
 
-                  <span className="text-base font-medium text-white/60 group-hover:text-white">
+                  <span className="text-base font-medium text-white/60 transition-colors group-hover:text-white">
                     Home
                   </span>
                 </div>
@@ -285,27 +320,49 @@ const Navbar = () => {
                   size={17}
                   className="text-white/20 group-hover:text-[#ff1638]"
                 />
-              </a>
+              </Link>
 
-              {/* ================= MOBILE SERVICES ================= */}
+              {/* ABOUT */}
+
+              <Link
+                to="/about"
+                onClick={handleNavClick}
+                className="group flex items-center justify-between border-b border-white/[0.07] py-5"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-[9px] tracking-[0.2em] text-[#ff1638]/60">
+                    02
+                  </span>
+
+                  <span className="text-base font-medium text-white/60 transition-colors group-hover:text-white">
+                    About
+                  </span>
+                </div>
+
+                <ArrowUpRight
+                  size={17}
+                  className="text-white/20 group-hover:text-[#ff1638]"
+                />
+              </Link>
+
+              {/* MOBILE SERVICES */}
 
               <div className="border-b border-white/[0.07]">
-
                 <button
                   type="button"
-                  onClick={() => setServicesOpen((prev) => !prev)}
+                  onClick={() =>
+                    setServicesOpen((prev) => !prev)
+                  }
                   className="flex w-full items-center justify-between py-5"
                 >
                   <div className="flex items-center gap-4">
-
                     <span className="text-[9px] tracking-[0.2em] text-[#ff1638]/60">
-                      02
+                      03
                     </span>
 
                     <span className="text-base font-medium text-white/60">
                       Services
                     </span>
-
                   </div>
 
                   <ChevronDown
@@ -318,25 +375,40 @@ const Navbar = () => {
                   />
                 </button>
 
-                {/* Mobile Service List */}
                 <div
                   className={`overflow-hidden transition-all duration-300 ${
                     servicesOpen
-                      ? "max-h-[500px] pb-3 opacity-100"
+                      ? "max-h-[600px] pb-3 opacity-100"
                       : "max-h-0 opacity-0"
                   }`}
                 >
                   <div className="ml-8 border-l border-[#ff1638]/20 pl-4">
 
+                    {/* All Services */}
+
+                    <Link
+                      to="/services"
+                      onClick={handleNavClick}
+                      className="group flex items-center justify-between py-3"
+                    >
+                      <span className="text-sm font-medium text-[#ff1638]">
+                        All Services
+                      </span>
+
+                      <ArrowUpRight
+                        size={14}
+                        className="text-[#ff1638]"
+                      />
+                    </Link>
+
                     {services.map((service, index) => (
-                      <a
+                      <Link
                         key={service.name}
-                        href={service.href}
+                        to={service.href}
                         onClick={handleNavClick}
                         className="group flex items-center justify-between py-3"
                       >
                         <div className="flex items-center gap-3">
-
                           <span className="text-[9px] text-[#ff1638]/50">
                             0{index + 1}
                           </span>
@@ -344,60 +416,75 @@ const Navbar = () => {
                           <span className="text-sm text-white/40 transition-colors group-hover:text-white">
                             {service.name}
                           </span>
-
                         </div>
 
                         <ArrowUpRight
                           size={14}
                           className="text-white/15 group-hover:text-[#ff1638]"
                         />
-                      </a>
+                      </Link>
                     ))}
-
                   </div>
                 </div>
               </div>
 
-              {/* MOBILE OTHER LINKS */}
+              {/* CONTACT */}
 
-              {navItems.slice(1).map((item, index) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={handleNavClick}
-                  className="group flex items-center justify-between border-b border-white/[0.07] py-5"
-                >
-                  <div className="flex items-center gap-4">
+              <Link
+                to="/contact"
+                onClick={handleNavClick}
+                className="group flex items-center justify-between border-b border-white/[0.07] py-5"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-[9px] tracking-[0.2em] text-[#ff1638]/60">
+                    04
+                  </span>
 
-                    <span className="text-[9px] tracking-[0.2em] text-[#ff1638]/60">
-                      0{index + 3}
-                    </span>
+                  <span className="text-base font-medium text-white/60 transition-colors group-hover:text-white">
+                    Contact
+                  </span>
+                </div>
 
-                    <span className="text-base font-medium text-white/60 transition-colors group-hover:text-white">
-                      {item.name}
-                    </span>
+                <ArrowUpRight
+                  size={17}
+                  className="text-white/20 group-hover:text-[#ff1638]"
+                />
+              </Link>
 
-                  </div>
+              {/* FAQ */}
 
-                  <ArrowUpRight
-                    size={17}
-                    className="text-white/20 transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#ff1638]"
-                  />
-                </a>
-              ))}
+              <Link
+                to="/faq"
+                onClick={handleNavClick}
+                className="group flex items-center justify-between border-b border-white/[0.07] py-5"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="text-[9px] tracking-[0.2em] text-[#ff1638]/60">
+                    05
+                  </span>
+
+                  <span className="text-base font-medium text-white/60 transition-colors group-hover:text-white">
+                    FAQ
+                  </span>
+                </div>
+
+                <ArrowUpRight
+                  size={17}
+                  className="text-white/20 group-hover:text-[#ff1638]"
+                />
+              </Link>
 
               {/* MOBILE CTA */}
 
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 onClick={handleNavClick}
                 className="mt-6 flex items-center justify-between bg-[#ff1638] px-5 py-4 text-sm font-semibold text-white"
               >
                 <span>Let's Talk</span>
 
                 <ArrowUpRight size={18} />
-              </a>
-
+              </Link>
             </nav>
           </div>
         </div>

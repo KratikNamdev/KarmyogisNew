@@ -86,8 +86,27 @@ const IndustryCard = ({ industry }) => {
     <motion.div
       whileHover={{ y: -8 }}
       transition={{ duration: 0.3 }}
-      className="group relative h-[440px] w-[420px] shrink-0 overflow-hidden rounded-[30px] border border-white/[0.08] bg-[#0a0a0a] p-8 transition-all duration-500 hover:border-red-500/30"
-    >
+     className="
+  group
+  relative
+  h-[440px]
+  w-full
+  max-w-full
+  min-w-0
+  shrink
+  overflow-hidden
+  rounded-[30px]
+  border
+  border-white/[0.08]
+  bg-[#0a0a0a]
+  p-6
+  transition-all
+  duration-500
+  hover:border-red-500/30
+  sm:p-8
+  lg:w-[420px]
+  lg:shrink-0
+" >
       {/* Grid */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.035]"
@@ -303,7 +322,7 @@ const IndustriesSection = () => {
           MOBILE
       ====================================================== */}
 
-      <div className="px-6 py-28 lg:hidden">
+<div className="w-full max-w-full overflow-hidden px-5 py-24 sm:px-6 sm:py-28 lg:hidden">
 
         <div className="mb-14">
 
@@ -333,7 +352,7 @@ const IndustriesSection = () => {
 
         </div>
 
-        <div className="flex flex-col gap-4">
+<div className="flex w-full max-w-full min-w-0 flex-col gap-4">
 
           {industries.map((industry) => (
             <IndustryCard
