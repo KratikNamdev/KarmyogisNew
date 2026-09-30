@@ -7,6 +7,8 @@ import Contact from "./Pages/Contact";
 import FAQ from "./Pages/FAQ";
 import Services from "./Pages/Services";
 import ServiceDetail from "./Pages/ServiceDetail";
+import TermsAndConditions from "./Pages/TermsAndConditions";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
 
 
 function App() {
@@ -21,6 +23,9 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="/services" element={<Services />} />
 <Route path="/services/:slug" element={<ServiceDetail />} />
+      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+
       </Routes>
 
       <Footer />

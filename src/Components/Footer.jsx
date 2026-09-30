@@ -250,21 +250,31 @@ const Footer = () => {
 
         <div className="flex flex-col gap-5 border-t border-white/[0.08] py-7 md:flex-row md:items-center md:justify-between">
 
-          <p className="text-xs text-white/25">
-            © {new Date().getFullYear()} Karmyogis. All rights reserved.
-          </p>
+        <p className="text-xs text-white/25">
+  © {new Date().getFullYear()} Karmyogis. All rights reserved.{" "}
+  <span className="text-white/15">|</span>{" "}
+  Designed & Developed by{" "}
+  <a
+    href="https://defaultprops.com/"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="text-white/40 transition-colors duration-300 hover:text-[#ff1638]"
+  >
+    Default Props
+  </a>
+</p>
 
           <div className="flex flex-wrap items-center gap-6">
 
             <a
-              href="#"
+              href="/privacy-policy"
               className="text-xs text-white/25 transition-colors hover:text-white/60"
             >
               Privacy Policy
             </a>
 
             <a
-              href="#"
+              href="/terms-and-conditions"
               className="text-xs text-white/25 transition-colors hover:text-white/60"
             >
               Terms & Conditions
